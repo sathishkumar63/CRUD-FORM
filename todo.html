@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <title>CRUD Todo List</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- ToDo Form -->
+      <div class="card my-5 border-0 rounded shadow">
+        <h3 class="card-header">Todo Form</h3>
+        <div class="card-body">
+          <form class="row g-3 todoForm" autocomplete="off">
+            <div class="col-md-6">
+              <label for="inputFirstName" class="form-label">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputFirstName"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="inputLastName" class="form-label">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputLastName"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="inputEmail" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputAddress"
+                placeholder="1234 Main St"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">City</label>
+              <input type="text" class="form-control" id="inputCity" required />
+            </div>
+            <div class="col-md-6">
+              <label for="inputZipCode" class="form-label">Zip Code</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputZipCode"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                onclick="onToDoFormSubmit()"
+              >
+                Add Todo
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- ToDo List -->
+      <div class="card mb-5 border-0 rounded shadow">
+        <div class="card-header d-flex justify-content-between">
+          <h3 class="card-title">Todo List</h3>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="deleteAllTodoList()"
+          >
+            Delete all
+          </button>
+        </div>
+        <div class="card-body">
+          <table class="table todoTable">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">Zip Code</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="todoBody">
+              <!-- Dynamically adding the table rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- todo js -->
+    <script src="./todo.js"></script>
+  </body>
+</html>
