@@ -19,7 +19,12 @@
       <div class="card my-5 border-0 rounded shadow">
         <h3 class="card-header">Todo Form</h3>
         <div class="card-body">
-          <form class="row g-3 todoForm" autocomplete="off">
+          <form
+            class="row g-3 todoForm"
+            onsubmit="event.preventDefault(); onToDoFormSubmit()"
+            novalidate
+            autocomplete="off"
+          >
             <div class="col-md-6">
               <label for="inputFirstName" class="form-label">First Name</label>
               <input
@@ -28,6 +33,7 @@
                 id="inputFirstName"
                 required
               />
+              <div class="text-danger" id="firstName-error"></div>
             </div>
             <div class="col-md-6">
               <label for="inputLastName" class="form-label">Last Name</label>
@@ -37,6 +43,7 @@
                 id="inputLastName"
                 required
               />
+              <div class="text-danger" id="lastName-error"></div>
             </div>
             <div class="col-md-6">
               <label for="inputEmail" class="form-label">Email</label>
@@ -46,6 +53,7 @@
                 id="inputEmail"
                 required
               />
+              <div class="text-danger" id="email-error"></div>
             </div>
             <div class="col-md-6">
               <label for="inputAddress" class="form-label">Address</label>
@@ -56,10 +64,12 @@
                 placeholder="1234 Main St"
                 required
               />
+              <div class="text-danger" id="address-error"></div>
             </div>
             <div class="col-md-6">
               <label for="inputCity" class="form-label">City</label>
               <input type="text" class="form-control" id="inputCity" required />
+              <div class="text-danger" id="city-error"></div>
             </div>
             <div class="col-md-6">
               <label for="inputZipCode" class="form-label">Zip Code</label>
@@ -69,14 +79,12 @@
                 id="inputZipCode"
                 required
               />
+              <div class="text-danger" id="zipCode-error"></div>
             </div>
             <div class="col-12">
-              <button
-                type="submit"
-                class="btn btn-primary"
-                onclick="onToDoFormSubmit()"
-              >
-                Add Todo
+              <button type="submit" class="btn btn-primary m-3">Add Todo</button>
+              <button type="reset" class="btn btn-outline-secondary m-3" onclick="resetToDoForm()">
+                Reset
               </button>
             </div>
           </form>

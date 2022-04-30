@@ -1,30 +1,114 @@
 // create array
 let todoList = [];
+
+const firstName = document.getElementById("inputFirstName");
+const lastName = document.getElementById("inputLastName");
+const email = document.getElementById("inputEmail");
+const address = document.getElementById("inputAddress");
+const city = document.getElementById("inputCity");
+const zipCode = document.getElementById("inputZipCode");
+
+const firstNameError = document.getElementById("firstName-error");
+const lastNameError = document.getElementById("lastName-error");
+const emailError = document.getElementById("email-error");
+const addressError = document.getElementById("address-error");
+const cityError = document.getElementById("city-error");
+const zipCodeError = document.getElementById("zipCode-error");
+
 // render todo list
 renderTodoList();
 
+function validateTodoForm() {
+  const firstNameValue = firstName.value.trim();
+  const lastNameValue = lastName.value.trim();
+  const emailValue = email.value.trim();
+  const addressValue = address.value.trim();
+  const cityValue = city.value.trim();
+  const zipCodeValue = zipCode.value.trim();
+
+  // validate First Name
+  if (firstNameValue === null || firstNameValue === "") {
+    firstName.classList.add("border-danger");
+    firstName.focus();
+    firstNameError.innerText = "First Name must be filled out";
+    return false;
+  } else {
+    firstName.classList.remove("border-danger");
+    firstNameError.innerText = "";
+  }
+  // validate Last Name
+  if (lastNameValue === null || lastNameValue === "") {
+    lastName.classList.add("border-danger");
+    lastNameError.innerText = "Last Name must be filled out";
+    lastName.focus();
+    return false;
+  } else {
+    lastName.classList.remove("border-danger");
+    lastNameError.innerText = "";
+  }
+  // validate Email
+  if (emailValue === null || emailValue === "") {
+    email.classList.add("border-danger");
+    emailError.innerText = "Email must be filled out";
+    email.focus();
+    return false;
+  } else {
+    email.classList.remove("border-danger");
+    emailError.innerText = "";
+  }
+  // validate Address
+  if (addressValue === null || addressValue === "") {
+    address.classList.add("border-danger");
+    addressError.innerText = "Address must be filled out";
+    address.focus();
+    return false;
+  } else {
+    address.classList.remove("border-danger");
+    addressError.innerText = "";
+  }
+  // validate city
+  if (cityValue === null || cityValue === "") {
+    city.classList.add("border-danger");
+    cityError.innerText = "City must be filled out";
+    city.focus();
+    return false;
+  } else {
+    city.classList.remove("border-danger");
+    cityError.innerText = "";
+  }
+  // validate zipCode
+  if (zipCodeValue === null || zipCodeValue === "") {
+    zipCode.classList.add("border-danger");
+    zipCodeError.innerText = "ZipCode must be filled out";
+    zipCode.focus();
+    return false;
+  } else {
+    zipCode.classList.remove("border-danger");
+    zipCodeError.innerText = "";
+  }
+  return true;
+}
+
 function onToDoFormSubmit() {
-  const formData = getToDoFormData();
-  addTodoList(formData);
+  if (validateTodoForm()) {
+    const formData = getToDoFormData();
+    addTodoList(formData);
+  }
 }
 
 function getToDoFormData() {
   const todoFormData = {};
   // Get the input value
-  todoFormData.firstName = document
-    .getElementById("inputFirstName")
-    .value.trim();
-  todoFormData.lastName = document.getElementById("inputLastName").value.trim();
-  todoFormData.email = document.getElementById("inputEmail").value.trim();
-  todoFormData.address = document.getElementById("inputAddress").value.trim();
-  todoFormData.city = document.getElementById("inputCity").value.trim();
-  todoFormData.zipCode = document.getElementById("inputZipCode").value.trim();
+  todoFormData.firstName = firstName.value;
+  todoFormData.lastName = lastName.value;
+  todoFormData.email = email.value;
+  todoFormData.address = address.value;
+  todoFormData.city = city.value;
+  todoFormData.zipCode = zipCode.value;
   return todoFormData;
 }
 
 function addTodoList(newTodo) {
-  // return if nothing was entered in the input
-  if (!newTodo) return;
   // add the new task to todo list
   todoList.push(newTodo);
   // add the todo list to localstorage
@@ -102,12 +186,12 @@ function deleteTodoList(item) {
 
 function resetToDoForm() {
   // Reset all the input value
-  document.getElementById("inputFirstName").value = "";
-  document.getElementById("inputLastName").value = "";
-  document.getElementById("inputEmail").value = "";
-  document.getElementById("inputAddress").value = "";
-  document.getElementById("inputCity").value = "";
-  document.getElementById("inputZipCode").value = "";
+  firstName.value = "";
+  lastName.value = "";
+  email.value = "";
+  address.value = "";
+  city.value = "";
+  zipCode.value = "";
 }
 
 function deleteAllTodoList() {
